@@ -23,3 +23,12 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+Cypress.Commands.add('loginWith', ({ email, password }) =>
+  cy.visit('http://161.97.89.34:3000/v2/gateway/login')
+    .findByPlaceholderText(/email/)
+    .type(email)
+    .findByPlaceholderText(/password/)
+    .type(password)
+    .findByText('Log in')
+    .click()
+)
